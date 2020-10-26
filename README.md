@@ -11,6 +11,11 @@ public class Test {
         
         System.out.println("Latitude: " + loc.getLatitude());
         System.out.println("Longitude: " + log.getLongitude());
+        
+        loc = Location.getLocation("192.168.0.1");
+        
+        System.out.println("Latitude: " + loc.getLatitude());
+        System.out.println("Longitude: " + loc.getLongitude());
     }
 }
 ```
