@@ -19,3 +19,27 @@ public class Test {
     }
 }
 ```
+
+## Installation
+
+### Gradle
+```gradle
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.github.tvanderb:GeoIP:1.0'
+}
+```
+
+### Maven
+```xml
+<dependencies>
+    <dependency>
+        <groupId>com.github.tvanderb</groupId>
+        <artifactId>GeoIP</artifactId>
+        <version>1.0</version>
+    </dependency>
+</dependencies>
+```

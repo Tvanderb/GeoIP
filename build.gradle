@@ -1,19 +1,80 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
+    }
+}
+
 plugins {
     id 'java'
     id 'application'
+    id 'io.codearte.nexus-staging' version '0.11.0'
 }
+
+apply plugin: 'com.bmuschko.nexus'
 
 mainClassName = "com.github.tvanderb.geoip.Test"
 
-group 'com.github.tvanderb'
-version '1.0'
+group = 'com.github.tvanderb'
+version = '1.0'
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 
     compile 'org.jsoup:jsoup:1.13.1'
+}
+
+modifyPom {
+    project {
+        name = 'teachUpload'
+        description = 'Java library to get an IP\'s geolocational data using web scraping.'
+        url = 'https://www.github.com/tvanderb/GeoIP'
+        inceptionYear = '2020'
+
+        scm {
+            url 'https://www.github.com/tvanderb/GeoIP'
+            connection 'https://www.github.com/tvanderb/GeoIP.git'
+            developerConnection 'https://www.github.com/tvanderb/GeoIP.git'
+        }
+
+        licenses {
+            license {
+                name = 'The Apache Software License, Version 2.0'
+                url = 'https://github.com/Tvanderb/GeoIP/blob/master/LICENSE'
+                distribution = 'repo'
+            }
+        }
+
+        developers {
+            developer {
+                id = 'tvanderbb'
+                name = 'Talon Vanderbeken'
+                email = 'talon.vanderbeken@gmail.com'
+            }
+        }
+    }
+}
+
+extraArchive {
+    sources = true
+    tests = true
+    javadoc = true
+}
+
+nexus {
+    sign = true
+    repositoryUrl = 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
+    snapshotRepositoryUrl = 'https://oss.sonatype.org/content/repositories/snapshots/'
+}
+
+nexusStaging {
+    packageGroup = "com.github.tvanderb"
+    stagingProfileId = "tvanderbb"
 }
