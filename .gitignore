@@ -1,2 +1,2 @@
-./gradle.properties
-./key
+gradle.properties
+key/secret-keys.gpg
