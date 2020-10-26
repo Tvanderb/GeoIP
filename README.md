@@ -29,7 +29,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.tvanderb:GeoIP:1.0'
+    compile 'com.github.tvanderb:GeoIP:version'
 }
 ```
 
@@ -39,7 +39,7 @@ dependencies {
     <dependency>
         <groupId>com.github.tvanderb</groupId>
         <artifactId>GeoIP</artifactId>
-        <version>1.0</version>
+        <version>version</version>
     </dependency>
 </dependencies>
 ```
