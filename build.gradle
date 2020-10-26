@@ -3,9 +3,9 @@ plugins {
     id 'application'
 }
 
-mainClassName = "me.tvanderb.geoip.Test"
+mainClassName = "com.github.tvanderb.geoip.Test"
 
-group 'me.tvanderb'
+group 'com.github.tvanderb'
 version '1.0'
 
 repositories {

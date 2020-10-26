@@ -1,4 +1,4 @@
-package me.tvanderb.geoip.api;
+package com.github.tvanderb.geoip.api;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -18,7 +18,7 @@ public class Location {
     /**
      * Gets the location of your IP address.
      *
-     * @return The {@link me.tvanderb.geoip.api.Location Location} of your IP address.
+     * @return The {@link Location Location} of your IP address.
      * @throws IOException If an I/O error occurs.
      */
     public static Location getMyLocation() throws IOException {
@@ -33,7 +33,7 @@ public class Location {
      * Gets the specified IP's coordinates.
      *
      * @param ip The IP address you wish to find the coordinates of.
-     * @return The {@link me.tvanderb.geoip.api.Location Location} of the IP address.
+     * @return The {@link Location Location} of the IP address.
      * @throws IOException If an I/O error occurs.
      */
     public static Location getLocation(String ip) throws IOException {

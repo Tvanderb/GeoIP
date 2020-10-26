@@ -1,6 +1,6 @@
-package me.tvanderb.geoip;
+package com.github.tvanderb.geoip;
 
-import me.tvanderb.geoip.api.Location;
+import com.github.tvanderb.geoip.api.Location;
 
 import java.io.IOException;
 
