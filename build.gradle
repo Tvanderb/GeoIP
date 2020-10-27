@@ -18,7 +18,7 @@ apply plugin: 'com.bmuschko.nexus'
 mainClassName = "com.github.tvanderb.geoip.Test"
 
 group = 'com.github.tvanderb'
-version = '1.0'
+version = '1.1'
 
 repositories {
     mavenCentral()
@@ -33,7 +33,7 @@ dependencies {
 
 modifyPom {
     project {
-        name = 'teachUpload'
+        name = 'GeoIP'
         description = 'Java library to get an IP\'s geolocational data using web scraping.'
         url = 'https://www.github.com/tvanderb/GeoIP'
         inceptionYear = '2020'

@@ -1,0 +1,8 @@
+-classpath '/Users/tvanderb/Programming/GeoIP/build/classes/java/main:/Users/tvanderb/Programming/GeoIP/build/resources/main:/Users/tvanderb/.gradle/caches/modules-2/files-2.1/org.jsoup/jsoup/1.13.1/f9577f3732bb7caa4fee8aba5053158f4010c118/jsoup-1.13.1.jar'
+-d '/Users/tvanderb/Programming/GeoIP/build/docs/javadoc'
+-doctitle 'GeoIP 1.1 API'
+-notimestamp 
+-quiet 
+-windowtitle 'GeoIP 1.1 API'
+'/Users/tvanderb/Programming/GeoIP/src/main/java/com/github/tvanderb/geoip/Test.java'
+'/Users/tvanderb/Programming/GeoIP/src/main/java/com/github/tvanderb/geoip/api/Location.java'
