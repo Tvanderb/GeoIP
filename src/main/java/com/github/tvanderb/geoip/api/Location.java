@@ -61,6 +61,20 @@ public class Location {
     }
 
     /**
+     * @return The latitude coordinate of the location.
+     */
+    public String getLatitude() {
+        return this.latitude;
+    }
+
+    /**
+     * @return The longitude coordinate of the location.
+     */
+    public String getLongitude() {
+        return this.longitude;
+    }
+
+    /**
      * @return The lat/long coordinates of the location ("79.352, -91.834")
      */
     @Override
