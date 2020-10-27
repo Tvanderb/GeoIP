@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.github.tvanderb</groupId>
+  <artifactId>GeoIP</artifactId>
+  <version>2.0</version>
+  <name>GeoIP</name>
+  <description>Java library to get an IP's geolocational data using web scraping.</description>
+  <url>https://www.github.com/tvanderb/GeoIP</url>
+  <inceptionYear>2020</inceptionYear>
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>https://github.com/Tvanderb/GeoIP/blob/master/LICENSE</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>tvanderbb</id>
+      <name>Talon Vanderbeken</name>
+      <email>talon.vanderbeken@gmail.com</email>
+    </developer>
+  </developers>
+  <scm>
+    <connection>https://www.github.com/tvanderb/GeoIP.git</connection>
+    <developerConnection>https://www.github.com/tvanderb/GeoIP.git</developerConnection>
+    <url>https://www.github.com/tvanderb/GeoIP</url>
+  </scm>
+  <dependencies>
+    <dependency>
+      <groupId>org.jsoup</groupId>
+      <artifactId>jsoup</artifactId>
+      <version>1.13.1</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

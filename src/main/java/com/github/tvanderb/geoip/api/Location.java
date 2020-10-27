@@ -3,17 +3,22 @@ package com.github.tvanderb.geoip.api;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.InetAddress;
 import java.net.URL;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Location {
 
     private static final String GEO_LOCATE_URL = "https://tools.keycdn.com/geo?host=";
     private static final Pattern LAT_LONG_SPLIT = Pattern.compile("([^0-9-\\.-])+");
+    private static final Pattern IP_REGEX = Pattern.compile("([0-9-]+\\.[0-9-]+\\.[0-9-]+\\.[0-9-]+)");
+    private static final Pattern COORD_REGEX = Pattern.compile("^((-)?[0-9]+\\.[0-9]+) \\(lat\\) \\/ ((-)?[0-9]+\\.[0-9]+) \\(long\\)$");
 
     /**
      * Gets the location of your IP address.
@@ -32,20 +37,34 @@ public class Location {
     /**
      * Gets the specified IP's coordinates.
      *
-     * @param ip The IP address you wish to find the coordinates of.
+     * @param hostname The IP address you wish to find the coordinates of.
      * @return The {@link Location Location} of the IP address.
      * @throws IOException If an I/O error occurs.
      */
-    public static Location getLocation(String ip) throws IOException {
-        String geoLocateUrl = GEO_LOCATE_URL + ip;
+    public static Location getLocation(String hostname) throws IOException {
+        if (!IP_REGEX.matcher(hostname).find()) {
+            InetAddress addr = InetAddress.getByName(hostname);
+            hostname = addr.getHostAddress();
+        }
+
+        String geoLocateUrl = GEO_LOCATE_URL + hostname;
 
         Document document = Jsoup
                 .connect(geoLocateUrl)
                 .get();
 
         Element table = document.getElementsByClass("row mb-0").first();
-        Element coordinatesElement = table.getElementsByClass("col-8").get(5);
-        String coordinates = coordinatesElement.text();
+        Elements resultElements = table.getElementsByClass("col-8");
+
+        String coordinates = "00.000 (lat) / 00.000 (long)";
+
+        for (Element element : resultElements) {
+            String text = element.text();
+            Matcher m = COORD_REGEX.matcher(text);
+            if (m.find()) {
+                coordinates = text;
+            }
+        }
 
         String[] coordsSplit = coordinates.replaceAll(LAT_LONG_SPLIT.pattern(), " ").split(" ");
 
@@ -75,10 +94,10 @@ public class Location {
     }
 
     /**
-     * @return The lat/long coordinates of the location ("79.352, -91.834")
+     * @return The location as a string. "(e.g (37.751 / -97.822)")
      */
     @Override
     public String toString() {
-        return this.latitude + ", " + this.longitude;
+        return "(" + this.latitude + " / " + this.longitude + ")";
     }
 }
